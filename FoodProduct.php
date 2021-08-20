@@ -13,6 +13,24 @@ class FoodProduct extends Product
     public function __construct(string $name, string $description, float $price, string $expiration)
     {
         parent::__construct($name, $description, $price);
-        $this->expiration = $expiration;
+        $date = new DateTime( $expiration);
+        $this->expiration = $date->format('Y-m-d');
+    }
+
+    public function __toString()
+    {
+        return $this->getName() . " (" . $this->getDescription() . "), Цена: " . 
+            $this->getPrice() . "/" . PHP_EOL . "Годен до " . $this->getExpiration();
+    }
+
+    public function getExpiration()
+    {
+        $date = new DateTime($this->expiration);
+        return $date->format('d-m-Y');
+    }
+
+    public function endPrice()
+    {
+        $this->getPrice();
     }
 }

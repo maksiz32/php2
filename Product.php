@@ -4,7 +4,7 @@
 5_2 - b1 - вызов уже совершенно нового класса, поэтому в каждом классе своя переменная X
 */
 
-class Product
+abstract class Product
 {
     private string $name;
     private string $description;
@@ -36,9 +36,5 @@ class Product
     {
         return ($course > 0) ? $this->getPrice()/$course : null;
     }
-
-    public function __toString(): string
-    {
-        return $this->getName() . " (" . $this->getDescription() . "), Цена: " . $this->getPrice();
-    }
+    public abstract function endPrice();
 }
